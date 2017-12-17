@@ -11,7 +11,7 @@ public class TextActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String joke = "Activity : "+getIntent().getExtras().getString("Joke1");
+        String joke = getIntent().getExtras().getString("Joke1");
         TextView tv = (TextView)findViewById(R.id.textView);
         tv.setText(joke);
     }

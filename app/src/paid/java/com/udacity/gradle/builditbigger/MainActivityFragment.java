@@ -1,30 +1,27 @@
 package com.udacity.gradle.builditbigger;
 
+import android.support.v4.app.Fragment;;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
+import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import com.udacity.gradle.builditbigger.jokes.TellJokes;
-
 
 /**
- * A placeholder fragment containing a simple view.
+ * Created by saumgarg on 17/12/17.
  */
+
 public class MainActivityFragment extends Fragment {
 
-    public MainActivityFragment() {
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
-
-
+        // Inflate the layout for this fragment
         return root;
     }
+
+
 }
