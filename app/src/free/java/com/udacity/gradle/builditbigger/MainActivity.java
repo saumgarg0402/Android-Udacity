@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new EndpointsAsyncTask().execute(this);
-        //MobileAds.initialize(this, "ca-app-pub-7427306339314367~9789744863");
 
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
@@ -59,29 +57,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-        //TextView textView = (TextView)findViewById(R.id.textView);
 
-        TellJokes tj = new TellJokes();
-        final Intent i = new Intent(this, TextActivity.class);
-        i.putExtra("Joke1",tj.getJokes());
-
-        if (mInterstitialAd.isLoaded()) {
-            mInterstitialAd.show();
-        }
-
-        mInterstitialAd.setAdListener(new AdListener() {
+        new EndpointsAsyncTask(){
             @Override
-            public void onAdClosed() {
-                // Load the next interstitial.
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
-                startActivity(i);
+            protected void onPostExecute(String result) {
+                final String joke=result;
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                }
+                mInterstitialAd.setAdListener(new AdListener() {
+                    @Override
+                    public void onAdClosed() {
+                        // Load the next interstitial.
+                        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+                        if(joke != null){
+                            startActivity(TextActivity.launchIntent(MainActivity.this,joke));
+                        }
+                        else{
+                            Toast.makeText(MainActivity.this,"Oops! I'm not that funny.",Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                });
+
+
+
             }
+        }.execute();
 
-        });
 
-        //textView.setText(tj.getJokes());
 
-        //Toast.makeText(this, tj.getJokes(), Toast.LENGTH_SHORT).show();
+
+
     }
 
 }

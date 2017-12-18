@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity{
             @Override
             protected void onPostExecute(String result) {
                 if(result != null){
-
                     startActivity(TextActivity.launchIntent(MainActivity.this,result));
                 }
                 else{

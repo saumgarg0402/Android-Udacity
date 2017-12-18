@@ -180,5 +180,20 @@
     <orderEntry type="library" exported="" name="com.fasterxml.jackson.core:jackson-core:2.1.3@jar" level="project" />
     <orderEntry type="module" module-name="javajokes" exported="" />
     <orderEntry type="module" module-name="jokesActivity" exported="" />
+    <orderEntry type="library" exported="" name="com.google.android.gms:play-services-basement-license-11.6.0" level="project" />
+    <orderEntry type="library" exported="" name="com.google.android.gms:play-services-basement-11.6.0" level="project" />
+    <orderEntry type="library" exported="" name="com.google.android.gms:play-services-ads-license-11.6.0" level="project" />
+    <orderEntry type="library" exported="" name="com.google.android.gms:play-services-ads-lite-license-11.6.0" level="project" />
+    <orderEntry type="library" exported="" name="com.google.android.gms:play-services-ads-11.6.0" level="project" />
+    <orderEntry type="library" exported="" name="com.android.support:design-25.2.0" level="project" />
+    <orderEntry type="library" exported="" name="com.google.android.gms:play-services-gass-license-11.6.0" level="project" />
+    <orderEntry type="library" exported="" name="com.android.support:transition-25.2.0" level="project" />
+    <orderEntry type="library" exported="" name="com.google.android.gms:play-services-ads-lite-11.6.0" level="project" />
+    <orderEntry type="library" exported="" name="com.android.support:recyclerview-v7-25.2.0" level="project" />
+    <orderEntry type="library" exported="" name="com.google.android.gms:play-services-gass-11.6.0" level="project" />
+    <orderEntry type="module" module-name="javajokes" exported="" />
+    <orderEntry type="module" module-name="jokesActivity" exported="" />
+    <orderEntry type="module" module-name="javajokes" exported="" />
+    <orderEntry type="module" module-name="jokesActivity" exported="" />
   </component>
 </module>
