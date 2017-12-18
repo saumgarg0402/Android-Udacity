@@ -1,13 +1,13 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
-import com.udacity.gradle.builditbigger.jokes.TellJokes;
 import com.udacity.gradle.builditbigger.jokesactivity.TextActivity;
 
 /**
@@ -16,13 +16,13 @@ import com.udacity.gradle.builditbigger.jokesactivity.TextActivity;
 
 public class MainActivity extends AppCompatActivity{
 
+    ProgressBar pBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        new EndpointsAsyncTask().execute(this);
-
-
+        pBar = (ProgressBar)findViewById(R.id.progressBar);
+        pBar.setVisibility(View.GONE);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -47,16 +47,22 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void tellJoke(View view) {
-        //TextView textView = (TextView)findViewById(R.id.textView);
 
-        TellJokes tj = new TellJokes();
-        Intent i = new Intent(this, TextActivity.class);
-        i.putExtra("Joke1",tj.getJokes());
+        pBar.setVisibility(View.VISIBLE);
+        new EndpointsAsyncTask(){
+            @Override
+            protected void onPostExecute(String result) {
+                if(result != null){
 
-        startActivity(i);
-        //textView.setText(tj.getJokes());
+                    startActivity(TextActivity.launchIntent(MainActivity.this,result));
+                }
+                else{
+                    Toast.makeText(MainActivity.this,"Oops! I'm not that funny.",Toast.LENGTH_LONG).show();
+                }
 
-        //Toast.makeText(this, tj.getJokes(), Toast.LENGTH_SHORT).show();
+                pBar.setVisibility(View.GONE);
+            }
+        }.execute();
     }
 
 

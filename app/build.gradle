@@ -35,7 +35,10 @@ android {
         }
     }
 }
-
+configurations {
+    freeCompile
+    paidCompile
+}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -45,7 +48,7 @@ dependencies {
     compile project(':jokesActivity')
     compile project(path: ':backend', configuration: 'android-endpoints')
     compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.google.android.gms:play-services-ads:11.6.0'
+    freeCompile 'com.google.android.gms:play-services-ads:11.6.0'
     compile 'com.android.support:support-v4:25.2.0'
-    compile 'com.android.support:design:25.2.0'
+    freeCompile 'com.android.support:design:25.2.0'
 }
